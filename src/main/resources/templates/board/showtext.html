@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/bootstrap.min.css}"
+        href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 내부 css -->
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 20%;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+
+</head>
+<body>
+<h2>글 내용</h2>
+<table th:class="table" th:border="1">
+  <th>제목</th>
+  <th>날짜</th>
+  <tr>
+    <td th:text="${text.title}"></td>
+    <td th:text="${text.createdDate}"></td>
+  </tr>
+</table>
+<div th:text="${text.content}">
+내용
+</div>
+<button >글 수정</button>
+<button>글 삭제</button>
+<button>목록으로</button>
+</body>
+</html>

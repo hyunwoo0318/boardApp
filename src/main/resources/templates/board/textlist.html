@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h2>게시판</h2>
+<table>
+    <form th:action th:object="${textList}" th:method="post">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+        </tr>
+        <tr th:each="text, textStat : ${textList}" class="form-check form-check-inline">
+            <td th:text="${textStat.index + 1}"></td>
+            <td th:text="${text.title}" th:onclick="|location.href='@{/board/{tid}(tid=${text.tid})}'|"></td>
+        </tr>
+    </form>
+</table>
+<button>새로운 글 작성</button>
+</body>
+</html>
