@@ -2,6 +2,7 @@ package Lim.boardApp.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class Text {
 
     private String title;
 
-    @Column(name = "CREATED_DATE")
+    @CreationTimestamp
+    @Column(name = "CREATED_DATE", nullable = false, updatable = false)
     private Date createdDate;
 }

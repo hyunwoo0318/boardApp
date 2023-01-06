@@ -2,15 +2,15 @@ package Lim.boardApp.Controller;
 
 import Lim.boardApp.domain.Text;
 import Lim.boardApp.repository.TextRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
 
 @Controller
+@Slf4j
 @RequestMapping("/board")
 public class textController {
 
@@ -33,21 +33,26 @@ public class textController {
         return "board/showtext";
     }
 
-    //글을 추가하는 메서드
-    @GetMapping("/new")
-    public String goToMakeNewText(Model model) {
-        Text text = new Text();
-        model.addAttribute("text", text);
-        return "board/makeText";
+    @PostMapping("/{tid}")
+    public String deleteText(@PathVariable Long tid){
+        textRepository.deleteById(tid);
+        return "redirect:/board";
     }
 
+
+    //글을 추가 및 수정하는 메서드
+    //TODO: update전용 객체를 만들어서 받고 넘기기.(제목하고 내용만 바꾸면됨.)
+    @GetMapping("/new")
+    public String goToMakeText(@RequestParam(value = "tid",required = false,defaultValue = "") Long tid ,Model model) {
+        Text text = new Text();
+        text.setTid(tid);
+        model.addAttribute("text", text);
+        return "board/maketext";
+    }
 
     @PostMapping("/new")
-    public String makeNewText(@ModelAttribute Text text) {
+    public String makeText(@ModelAttribute Text text) {
         textRepository.save(text);
-        return "/board/textlist";
+        return "redirect:/board";
     }
-
-
-    //TODO: 글 수정 컨트롤러 구현 -> new와 같은데 ? 파라미터로 받아서 사용 tid만 구성하면됨.
 }

@@ -25,6 +25,7 @@
 </head>
 <body>
 <h2>글 내용</h2>
+
 <table th:class="table" th:border="1">
   <th>제목</th>
   <th>날짜</th>
@@ -36,8 +37,10 @@
 <div th:text="${text.content}">
 내용
 </div>
-<button >글 수정</button>
-<button>글 삭제</button>
-<button>목록으로</button>
+<button type="button" th:onclick="|location.href='@{/board/new(tid=${text.tid})}'|">글 수정</button>
+<form th:action th:object="${text}" th:method="post">
+<button type="submit">글 삭제</button>
+</form>
+<button type="button" th:onclick="|location.href='@{/board}'|">목록으로</button>
 </body>
 </html>

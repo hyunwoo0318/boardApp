@@ -12,7 +12,5 @@ import java.util.Calendar;
 public class BoardAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BoardAppApplication.class, args);
-
-
 	}
 }
