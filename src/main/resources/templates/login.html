@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 화면입니다.</title>
+</head>
+<body>
+<form th:action th:object="${loginForm}" method="post">
+    <div>
+        <label for="loginId" >로그인 ID</label>
+        <input type="text" id="loginId" th:field="*{loginId}" class="form-control">
+    </div>
+    <div>
+        <label for="password">패스워드</label>
+        <input type="text" id="password" th:field="*{password}" class="form-control">
+    </div>
+    <div>
+        <button type="submit">로그인</button>
+    </div>
+</form>
+</body>
+</html>
