@@ -1851,6 +1851,12 @@ textarea.form-control {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); }
 
+.field-error{
+  color: #dc3545; }
+
+.global-error {
+  color: #dc3545; }
+
 .invalid-feedback {
   display: none;
   width: 100%;
